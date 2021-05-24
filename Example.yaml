@@ -1,0 +1,43 @@
+# Comments
+# YAML validator https://yamlvalidator.com/
+
+person:
+  name: &name "Eddy" # Anchors the name value (:33)
+  ocuppation: "Developer"
+  age: 24
+  size: !!float 2 #Convert the value to float
+  gpa: 3.5
+  volume: !!str 40.4 #Convert the value to string
+  fav_num: 1e+10
+  male: true
+  birthday: 1996-02-08  #ISO 8601 standart
+  flaws: null
+  hobbies:
+    - hiking
+    - movies
+    - riding bike
+  movies: ["Dark Knight", "Good Will Hounting"]
+  friends:
+    - name: "Steph"
+      age: 22
+    - {name: "Adam", age: 22}
+    -
+      name: "joe"
+      age: 23
+  description: > # Simbol make yaml translate to a single line
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+    when an unknown printer took a galley of type and scrambled it to make a typ
+  signature: | # Preserve the format
+    Mike
+    Giraffe Acatemy
+    Email...
+  id: *name #Set the anchored value (:5)
+
+  base: &base #Storing anchor
+    var1: value1
+    var2: 22
+  
+  foo:
+    <<: *base #Set all key value anchored (:35)
+    var3: something else
